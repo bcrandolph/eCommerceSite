@@ -20,6 +20,13 @@ namespace eCommerceSite.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        DbSet<User> Users { get; set; }
+
+        DbSet<Type> Types { get; set; }
+
+        DbSet<CartItem> CartItems { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +36,7 @@ namespace eCommerceSite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Bundle> Bundles { get; set; }
     }
 }
