@@ -8,6 +8,7 @@ namespace eCommerceSite.Controllers
 {
     public class HomeController : Controller
     {
+        //[AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -26,6 +27,20 @@ namespace eCommerceSite.Controllers
 
             return View();
         }
+
+        //public ActionResult Gallery()
+        //{
+        //    ViewBag.Message = "Gallery";
+
+        //    return View();
+        //}
+
+        //public ActionResult Cart()
+        //{
+        //    ViewBag.Message = "Cart";
+
+        //    return View();
+        //}
 
     }
 }

@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace eCommerceSite.Controllers
 {
-    public class GalleryController : Controller
+    public class ReportsController : Controller
     {
-        // GET: Gallery
+        // GET: Reports
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Products()
+        public ActionResult Reports()
         {
             return View();
         }
