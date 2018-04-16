@@ -1,0 +1,39 @@
+﻿@model IEnumerable<eCommerceSite.Models.Bundle>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<h2>Bundles</h2>
+<table id="bundles" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Bundle</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#bundles").DataTable({
+                ajax: {
+                    url: "/api/bundles/",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "type.name"
+                    }
+                ]
+            });
+        });
+    </script>
+}

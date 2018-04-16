@@ -8,7 +8,7 @@ namespace eCommerceSite.Models
 {
     public class Type
     {
-        public int Id { get; set; }
+        public byte Id { get; set; }
 
         [Required]
         [StringLength(255)]

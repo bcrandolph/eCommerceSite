@@ -9,6 +9,9 @@ namespace eCommerceSite.ViewModels
 {
     public class BundleViewModel
     {
+        public IEnumerable<Models.Type> Types { get; set; }
+        public IEnumerable<Size> Sizes { get; set; }
+
         public int? Id { get; set; }
 
         [Required]
@@ -17,8 +20,7 @@ namespace eCommerceSite.ViewModels
 
         [Display(Name = "Type")]
         [Required]
-
-        public Models.Type Type { get; set; }
+        public int? TypeId{ get; set; }
 
         [Display(Name = "Number in Stock")]
         [Range(1, 20)]
@@ -26,15 +28,20 @@ namespace eCommerceSite.ViewModels
 
         public int AmtSold { get; set; }
 
-        [Display(Name = "Cost")]
         [Required]
         public float? Cost { get; set; }
 
-        [Required]
+        [Display(Name = "Size")]
         [StringLength(255)]
-        public string Size { get; set; }
+        public byte? SizeId { get; set; }
 
-        public float Revenue { get; set; }
+        public string Title
+        {
+            get
+            {
+                return Id != 0 ? "Edit Bundle" : "New Bundle";
+            }
+        }
 
         public BundleViewModel()
         {
@@ -45,12 +52,11 @@ namespace eCommerceSite.ViewModels
         {
             Id = bundle.Id;
             Name = bundle.Name;
-            Type = bundle.Type;
+            TypeId = bundle.TypeId;
+            SizeId = bundle.SizeId;
             NumberInStock = bundle.NumberInStock;
             AmtSold = bundle.AmtSold;
             Cost = bundle.Cost;
-            Size = bundle.Size;
-            Revenue = bundle.Revenue;
         }
     }
 }

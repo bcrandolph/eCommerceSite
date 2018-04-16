@@ -1,0 +1,44 @@
+﻿@model eCommerceSite.ViewModels.BundleViewModel
+
+@{
+    ViewBag.Title = "BundleForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BundleForm</h2>
+@using (Html.BeginForm("Save", "Bundles"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TypeId)
+        @Html.DropDownListFor(m => m.TypeId, new SelectList(Model.Types, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SizeId)
+        @Html.DropDownListFor(m => m.SizeId, new SelectList(Model.Sizes, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SizeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberInStock)
+        @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NumberInStock)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cost)
+        @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cost)
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

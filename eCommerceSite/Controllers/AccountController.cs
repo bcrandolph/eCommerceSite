@@ -156,11 +156,6 @@ namespace eCommerceSite.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //temp code (already implemented)
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("CanManageGallery"));
-                    //await UserManager.AddToRoleAsync(user.Id, "CanManageGallery");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

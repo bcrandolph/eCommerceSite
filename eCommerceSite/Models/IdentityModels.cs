@@ -21,11 +21,12 @@ namespace eCommerceSite.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        DbSet<Type> Types { get; set; }
+        public DbSet<Type> Types { get; set; }
+        public DbSet<Size> Sizes{ get; set; }
 
-        DbSet<CartItem> CartItems { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

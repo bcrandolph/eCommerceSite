@@ -14,9 +14,11 @@ namespace eCommerceSite.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        public Type Type { get; set; }
+
         [Display(Name = "Type")]
         [Required]
-        public Type Type { get; set; }
+        public byte TypeId { get; set; }
 
         [Display(Name = "Number in Stock")]
         [Range(1,20)]
@@ -28,10 +30,11 @@ namespace eCommerceSite.Models
         [Required]
         public float Cost { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string Size { get; set; }
+        public Size Size { get; set; }
 
-        public float Revenue { get; set; }
+        [Display(Name = "Size")]
+        [Required]
+        public byte SizeId { get; set; }
+
     }
 }

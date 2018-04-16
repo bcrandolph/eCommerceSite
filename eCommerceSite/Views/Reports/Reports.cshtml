@@ -1,10 +1,125 @@
-﻿
+﻿@model IEnumerable<eCommerceSite.Models.Report>
 @{
-    ViewBag.Title = "Report1" +
-                ", Report2" +
-                ", etc.";
+    ViewBag.Title = "Reports";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Revenue Report</h2>
+<table id="revenueReport" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Bundle</th>
+            <th>Amount Sold</th>
+            <th>Cost</th>
+            <th>Revenue</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<h2>Type Report</h2>
+<table id="typeReport" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Items In Type</th>
+            <th>Type Revenue</th>
+            <th>Type Average Revenue</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<h2>Size Report</h2>
+<table id="sizeReport" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Size</th>
+            <th>Amount Sold</th>
+            <th>Quantity in Stock</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 
-<h2>Reports</h2>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#revenueReport").DataTable({
+                ajax: {
+                    url: "/api/bundles/",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "amtSold"
+                    },
+                    {
+                        data: "cost"
+                    },
+                    {
+                        data: function (bundle) {
+                            return bundle.amtSold * bundle.cost;
+                        }
+                    }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            var table = $("#typeReport").DataTable({
+                ajax: {
+                    url: "/api/reports/",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "typeName",
+                        defaultcontent: ""
+                    },
+                    {
+                        data: "typeItems",
+                        defaultcontent: ""
+                    },
+                    {
+                        data: "typeRevenue",
+                        defaultcontent: ""
+                    },
+                    {
+                        data: function (report) {
+                            return report.typeRevenue / report.typeItems;
+                        }
+                    }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            var table = $("#sizeReport").DataTable({
+                ajax: {
+                    url: "/api/sizereport/",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "sizeName",
+                        defaultcontent: ""
+                    },
+                    {
+                        data: "sizeSold",
+                        defaultcontent: ""
+                    },
+                    {
+                        data: "sizeStock",
+                        defaultcontent: ""
+                    }
+                ]
+            });
+        });
+    </script>
+}
