@@ -9,20 +9,23 @@
         <tr>
             <th>Bundle</th>
             <th>Amount Sold</th>
-            <th>Cost</th>
-            <th>Revenue</th>
+            <th>Cost ($)</th>
+            <th>Revenue ($)</th>
         </tr>
     </thead>
     <tbody></tbody>
 </table>
+<h2>Total Store Revenue</h2>
+<h3 id="totalRevenue" style="text-decoration:underline; stroke:crimson" >
+</h3>
 <h2>Type Report</h2>
 <table id="typeReport" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Type</th>
             <th>Items In Type</th>
-            <th>Type Revenue</th>
-            <th>Type Average Revenue</th>
+            <th>Type Revenue ($)</th>
+            <th id="revenue">Type Average Revenue ($)</th>
         </tr>
     </thead>
     <tbody></tbody>
@@ -40,11 +43,13 @@
 </table>
 
 
+
 @section scripts
 {
     <script>
+
         $(document).ready(function () {
-            var table = $("#revenueReport").DataTable({
+            var revTable = $("#revenueReport").DataTable({
                 ajax: {
                     url: "/api/bundles/",
                     dataType: "json",
@@ -65,12 +70,25 @@
                             return bundle.amtSold * bundle.cost;
                         }
                     }
-                ]
-            });
+                ],
+                "initComplete": function () {
+                    var p = $("#totalRevenue").text(function () {
+                        var objArray = revTable.column(3).data().toArray();
+                        var revenue = 0;
+                        for (var i = 0; i < objArray.length; i++) {
+                            revenue += objArray[i];
+                        }
+                        return "$"+revenue;
+                    });
+                }       
+            })
+
+
+
         });
 
         $(document).ready(function () {
-            var table = $("#typeReport").DataTable({
+            var typeTable = $("#typeReport").DataTable({
                 ajax: {
                     url: "/api/reports/",
                     dataType: "json",
@@ -99,7 +117,7 @@
         });
 
         $(document).ready(function () {
-            var table = $("#sizeReport").DataTable({
+            var sizeTable = $("#sizeReport").DataTable({
                 ajax: {
                     url: "/api/sizereport/",
                     dataType: "json",

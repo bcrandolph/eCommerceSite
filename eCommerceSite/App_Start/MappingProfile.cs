@@ -17,6 +17,7 @@ namespace eCommerceSite.App_Start
             CreateMap<SizeReport, SizeReportDto>();
             CreateMap<Models.Type, TypeDto>();
             CreateMap<Size, SizeDto>();
+            CreateMap<User, UserDto>();
 
             //Dto to Domain
             CreateMap<ReportDto, Report>();
@@ -26,6 +27,8 @@ namespace eCommerceSite.App_Start
             CreateMap<TypeDto, Models.Type>()
                 .ForMember(c => c.Id, opt => opt.Ignore());
             CreateMap<SizeDto, Size>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+            CreateMap<UserDto, User>()
                 .ForMember(c => c.Id, opt => opt.Ignore());
         }
     }

@@ -11,7 +11,7 @@ namespace eCommerceSite.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            return View();
+            return View("Cart");
         }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using eCommerceSite.Models;
 
-namespace eCommerceSite.Models
+namespace eCommerceSite.Dtos
 {
-    public class User
+    public class UserDto
     {
         [Required]
         [StringLength(128)]
@@ -26,6 +27,5 @@ namespace eCommerceSite.Models
         [Required]
         public ShoppingCart Cart { get; set; }
         public int CartId { get; set; }
-
     }
 }

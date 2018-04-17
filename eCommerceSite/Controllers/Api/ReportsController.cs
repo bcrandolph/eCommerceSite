@@ -55,10 +55,8 @@ namespace eCommerceSite.Controllers.Api
             reportDto.Add(reportMiddle);
             reportDto.Add(reportHigh);
             reportDto.Add(reportCollege);
-
             if (!String.IsNullOrWhiteSpace(query))
                 bundleQuery = bundleQuery.Where(m => m.Name.Contains(query));
-
             return Ok(reportDto);
         }
 

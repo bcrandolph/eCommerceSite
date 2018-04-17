@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Http;
 using System.Data.Entity;
 using eCommerceSite.Models;
+using eCommerceSite.Dtos;
 using AutoMapper;
 
 namespace eCommerceSite.Controllers.Api

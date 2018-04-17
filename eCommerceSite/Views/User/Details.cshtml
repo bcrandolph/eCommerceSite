@@ -1,0 +1,17 @@
+﻿
+@model eCommerceSite.Models.User
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Account</h2>
+
+<h2>@Model.Name</h2>
+<ul>
+    <li>Name: @Model.Name</li>
+    <li>Billing Address: @Model.Billing</li>
+    <li>Shipping Address: @Model.Shipping</li>
+    <li>Payment: @Model.Payment</li>
+</ul>

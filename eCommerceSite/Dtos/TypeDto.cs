@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace eCommerceSite.Models
+namespace eCommerceSite.Dtos
 {
     public class TypeDto
     {

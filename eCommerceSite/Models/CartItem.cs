@@ -10,7 +10,10 @@ namespace eCommerceSite.Models
     {
         [Required]
         public int Id { get; set; }
-
+        [Required]
+        public ShoppingCart Cart { get; set; }
+        [Required]
+        public Bundle bundle { get; set; }
         [Required]
         public int BundleID { get; set; }
 

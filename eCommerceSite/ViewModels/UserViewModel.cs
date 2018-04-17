@@ -24,5 +24,6 @@ namespace eCommerceSite.ViewModels
 
         [Required]
         public ShoppingCart Cart { get; set; }
+        public int CartId { get; set; }
     }
 }
