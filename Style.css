@@ -1,0 +1,9 @@
+﻿
+
+bodyimage {
+    background-image: url('~/Content/Images/BackgroundImageFaded.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
