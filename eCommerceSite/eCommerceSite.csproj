@@ -209,6 +209,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BundlesController.cs" />
+    <Compile Include="Controllers\Api\CartController.cs" />
     <Compile Include="Controllers\Api\ReportsController.cs" />
     <Compile Include="Controllers\Api\SizeReportController.cs" />
     <Compile Include="Controllers\Api\UserController.cs" />
@@ -219,7 +220,9 @@
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dtos\BundleDto.cs" />
+    <Compile Include="Dtos\CartItemsDto.cs" />
     <Compile Include="Dtos\ReportDto.cs" />
+    <Compile Include="Dtos\ShoppingCartDto.cs" />
     <Compile Include="Dtos\SizeDto.cs" />
     <Compile Include="Dtos\SizeReportDto.cs" />
     <Compile Include="Dtos\TypeDto.cs" />
@@ -227,64 +230,38 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804100535217_InitialModel.cs" />
-    <Compile Include="Migrations\201804100535217_InitialModel.Designer.cs">
-      <DependentUpon>201804100535217_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201804180820201_test.cs" />
+    <Compile Include="Migrations\201804180820201_test.Designer.cs">
+      <DependentUpon>201804180820201_test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804142050251_SeedUsers.cs" />
-    <Compile Include="Migrations\201804142050251_SeedUsers.Designer.cs">
-      <DependentUpon>201804142050251_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201804180821039_test1.cs" />
+    <Compile Include="Migrations\201804180821039_test1.Designer.cs">
+      <DependentUpon>201804180821039_test1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804142133431_InitialModel1.cs" />
-    <Compile Include="Migrations\201804142133431_InitialModel1.Designer.cs">
-      <DependentUpon>201804142133431_InitialModel1.cs</DependentUpon>
+    <Compile Include="Migrations\201804180823462_test2.cs" />
+    <Compile Include="Migrations\201804180823462_test2.Designer.cs">
+      <DependentUpon>201804180823462_test2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804151538488_SizeTable.cs" />
-    <Compile Include="Migrations\201804151538488_SizeTable.Designer.cs">
-      <DependentUpon>201804151538488_SizeTable.cs</DependentUpon>
+    <Compile Include="Migrations\201804180826312_Seed.cs" />
+    <Compile Include="Migrations\201804180826312_Seed.Designer.cs">
+      <DependentUpon>201804180826312_Seed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804152121226_SizeandTypeFix.cs" />
-    <Compile Include="Migrations\201804152121226_SizeandTypeFix.Designer.cs">
-      <DependentUpon>201804152121226_SizeandTypeFix.cs</DependentUpon>
+    <Compile Include="Migrations\201804180838481_Seed2.cs" />
+    <Compile Include="Migrations\201804180838481_Seed2.Designer.cs">
+      <DependentUpon>201804180838481_Seed2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804160134293_update.cs" />
-    <Compile Include="Migrations\201804160134293_update.Designer.cs">
-      <DependentUpon>201804160134293_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804162105101_UpdateUsers.cs" />
-    <Compile Include="Migrations\201804162105101_UpdateUsers.Designer.cs">
-      <DependentUpon>201804162105101_UpdateUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804162114194_ShoppingCart.cs" />
-    <Compile Include="Migrations\201804162114194_ShoppingCart.Designer.cs">
-      <DependentUpon>201804162114194_ShoppingCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804162127145_UserCart.cs" />
-    <Compile Include="Migrations\201804162127145_UserCart.Designer.cs">
-      <DependentUpon>201804162127145_UserCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804170500450_CartStuff.cs" />
-    <Compile Include="Migrations\201804170500450_CartStuff.Designer.cs">
-      <DependentUpon>201804170500450_CartStuff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804170620217_ShoppingCartHelper.cs" />
-    <Compile Include="Migrations\201804170620217_ShoppingCartHelper.Designer.cs">
-      <DependentUpon>201804170620217_ShoppingCartHelper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804170621218_Cart.cs" />
-    <Compile Include="Migrations\201804170621218_Cart.Designer.cs">
-      <DependentUpon>201804170621218_Cart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804170629166_Cart2.cs" />
-    <Compile Include="Migrations\201804170629166_Cart2.Designer.cs">
-      <DependentUpon>201804170629166_Cart2.cs</DependentUpon>
+    <Compile Include="Migrations\201804190613440_OrderTable.cs" />
+    <Compile Include="Migrations\201804190613440_OrderTable.Designer.cs">
+      <DependentUpon>201804190613440_OrderTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bundle.cs" />
+    <Compile Include="Models\CartHelper.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
@@ -297,6 +274,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BundleViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -614,7 +593,8 @@
     <Content Include="Views\Bundles\BundleForm.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Bundles\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -633,44 +613,23 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804100535217_InitialModel.resx">
-      <DependentUpon>201804100535217_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804180820201_test.resx">
+      <DependentUpon>201804180820201_test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804142050251_SeedUsers.resx">
-      <DependentUpon>201804142050251_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804180821039_test1.resx">
+      <DependentUpon>201804180821039_test1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804142133431_InitialModel1.resx">
-      <DependentUpon>201804142133431_InitialModel1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804180823462_test2.resx">
+      <DependentUpon>201804180823462_test2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804151538488_SizeTable.resx">
-      <DependentUpon>201804151538488_SizeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804180826312_Seed.resx">
+      <DependentUpon>201804180826312_Seed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804152121226_SizeandTypeFix.resx">
-      <DependentUpon>201804152121226_SizeandTypeFix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804180838481_Seed2.resx">
+      <DependentUpon>201804180838481_Seed2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804160134293_update.resx">
-      <DependentUpon>201804160134293_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804162105101_UpdateUsers.resx">
-      <DependentUpon>201804162105101_UpdateUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804162114194_ShoppingCart.resx">
-      <DependentUpon>201804162114194_ShoppingCart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804162127145_UserCart.resx">
-      <DependentUpon>201804162127145_UserCart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804170500450_CartStuff.resx">
-      <DependentUpon>201804170500450_CartStuff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804170620217_ShoppingCartHelper.resx">
-      <DependentUpon>201804170620217_ShoppingCartHelper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804170621218_Cart.resx">
-      <DependentUpon>201804170621218_Cart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804170629166_Cart2.resx">
-      <DependentUpon>201804170629166_Cart2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804190613440_OrderTable.resx">
+      <DependentUpon>201804190613440_OrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

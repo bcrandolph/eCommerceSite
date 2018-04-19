@@ -18,11 +18,17 @@ namespace eCommerceSite.App_Start
             CreateMap<Models.Type, TypeDto>();
             CreateMap<Size, SizeDto>();
             CreateMap<User, UserDto>();
+            CreateMap<CartItem, CartItemsDto>();
+            CreateMap<ShoppingCart, ShoppingCartDto>();
 
             //Dto to Domain
             CreateMap<ReportDto, Report>();
             CreateMap<SizeReportDto, SizeReport>();
             CreateMap<BundleDto, Bundle>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+            CreateMap<CartItemsDto, CartItem>()
+                .ForMember(c => c.Cart_Id, opt => opt.Ignore());
+            CreateMap<ShoppingCartDto, ShoppingCart>()
                 .ForMember(c => c.Id, opt => opt.Ignore());
             CreateMap<TypeDto, Models.Type>()
                 .ForMember(c => c.Id, opt => opt.Ignore());

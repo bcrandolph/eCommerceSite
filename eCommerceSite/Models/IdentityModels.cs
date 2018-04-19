@@ -25,12 +25,14 @@ namespace eCommerceSite.Models
     {
 
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Order> Order { get; set; }
         public DbSet<Type> Types { get; set; }
         public DbSet<Size> Sizes{ get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
 
         public DbSet<CartItem> CartItems { get; set; }
+
+        public DbSet<Bundle> Bundles { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -42,6 +44,6 @@ namespace eCommerceSite.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Bundle> Bundles { get; set; }
+
     }
 }

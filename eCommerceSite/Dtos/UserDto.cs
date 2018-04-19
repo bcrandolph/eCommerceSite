@@ -27,5 +27,8 @@ namespace eCommerceSite.Dtos
         [Required]
         public ShoppingCart Cart { get; set; }
         public int CartId { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Email { get; set; }
     }
 }

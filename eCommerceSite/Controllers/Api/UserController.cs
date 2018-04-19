@@ -21,17 +21,21 @@ namespace eCommerceSite.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        ////Get /api/User
-        //public IEnumerable<UserDto> GetUser(string id)
-        //{
+        //Get /api/User
+        public IHttpActionResult GetUser(string query = null)
+        {
 
-        //    //var userQuery = _context.Users;
+            var userQuery = _context.Users
+                .Include(c => c.Cart);
 
-            
+            if (!String.IsNullOrWhiteSpace(query))
+                userQuery = userQuery.Where(c => c.Name.Contains(query));
 
-        //    //return bundleQuery
-        //    //    .ToList()
-        //    //    .Select(Mapper.Map<Bundle, BundleDto>);
-        //}
+            var userDto = userQuery
+                .ToList()
+                .Select(Mapper.Map<User, UserDto>);
+
+            return Ok(userDto);
+        }
     }
 }

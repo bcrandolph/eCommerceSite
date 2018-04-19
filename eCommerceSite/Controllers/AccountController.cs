@@ -161,7 +161,7 @@ namespace eCommerceSite.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var temp = new User { Id = user.Id, CartId = _context.ShoppingCart.AsEnumerable().Last().Id , Name = model.Name};
+                    var temp = new User { Id = user.Id, CartId = _context.ShoppingCart.AsEnumerable().Last().Id , Name = model.Name, Email = model.Email};
                     _context.Users.Add(temp);
                     _context.SaveChanges();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

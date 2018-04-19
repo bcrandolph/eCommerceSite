@@ -1,0 +1,74 @@
+﻿@model eCommerceSite.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h3>
+    <em>Review</em> your cart:
+</h3>
+<p class="button">
+    @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")
+</p>
+<div id="update-message">
+</div>
+<table id="cart" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Bundle</th>
+            <th>Cost(Per Item)</th>
+            <th>Quantity(Per Item)</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#cart").DataTable({
+                ajax: {
+                    url: "/api/cart/",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "bundle.name"
+                    },
+                    {
+                        data: "bundle.cost"
+                    },
+                    {
+                        data: "quantity"
+                    },
+                    {
+                        data: "cart_Id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-cart-cart_Id=" + data + ">Remove</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#cart").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to remove this bundle from your cart?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/cart/" + button.attr("data-cart-cart_Id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+}
