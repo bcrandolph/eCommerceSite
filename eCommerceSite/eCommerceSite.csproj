@@ -279,6 +279,10 @@
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-eCommerceSite-20180328060704.mdf" />
+    <Content Include="App_Data\aspnet-eCommerceSite-20180328060704_log.ldf">
+      <DependentUpon>aspnet-eCommerceSite-20180328060704.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -439,6 +443,18 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Images\BackgroundImageFaded.png" />
+    <Content Include="Content\Images\Csupply 1.jpg" />
+    <Content Include="Content\Images\Csupply 2.jpg" />
+    <Content Include="Content\Images\Csupply 3.jpg" />
+    <Content Include="Content\Images\Supply 0.jpg" />
+    <Content Include="Content\Images\Supply 2.jpg" />
+    <Content Include="Content\Images\Supply 3.jpg" />
+    <Content Include="Content\Images\Supply 4.jpg" />
+    <Content Include="Content\Images\Supply 5.jpg" />
+    <Content Include="Content\Images\Supply 6.jpg" />
+    <Content Include="Content\Images\Supply 7.jpg" />
+    <Content Include="Content\Style.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -596,9 +612,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Bundles\Details.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
