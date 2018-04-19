@@ -9,6 +9,7 @@ using eCommerceSite.Models;
 using eCommerceSite.Dtos;
 using AutoMapper;
 
+
 namespace eCommerceSite.Controllers.Api
 {
     public class UserController : ApiController
@@ -20,26 +21,21 @@ namespace eCommerceSite.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        public IHttpActionResult GetUserInfo(string id)
+        //Get /api/User
+        public IHttpActionResult GetUser(string query = null)
         {
-            var user = _context.Users.SingleOrDefault(u => u.Id == id);
 
-            if (user == null)
-                return NotFound();
+            var userQuery = _context.Users
+                .Include(c => c.Cart);
 
-            return Ok(Mapper.Map<User, UserDto>(user));
+            if (!String.IsNullOrWhiteSpace(query))
+                userQuery = userQuery.Where(c => c.Name.Contains(query));
+
+            var userDto = userQuery
+                .ToList()
+                .Select(Mapper.Map<User, UserDto>);
+
+            return Ok(userDto);
         }
-        ////Get /api/User
-        //public IEnumerable<UserDto> GetUser(string id)
-        //{
-
-        //    //var userQuery = _context.Users;
-
-
-
-        //    //return bundleQuery
-        //    //    .ToList()
-        //    //    .Select(Mapper.Map<Bundle, BundleDto>);
-        //}
     }
 }

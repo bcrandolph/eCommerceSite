@@ -1,0 +1,21 @@
+﻿@model eCommerceSite.Models.Bundle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <ul>
+        <li>Type: @Model.Type.Name</li>
+        <li>Cost: @Model.Cost</li>
+        <li>Number in Stock: @Model.NumberInStock</li>
+    </ul>
+</div>
+<div>
+    <p class="button">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
+    <p class="button">@Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id }, "")</p>
+    <p class="button">@Html.ActionLink("Back to List", "Index")</p>
+</div>
