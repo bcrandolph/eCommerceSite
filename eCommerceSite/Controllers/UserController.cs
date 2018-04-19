@@ -24,7 +24,7 @@ namespace eCommerceSite.Controllers
             var user = _context.Users.SingleOrDefault(c => c.Id == id);
 
             if (user == null)
-                return HttpNotFound();
+                return Content(id);//HttpNotFound();
 
             return View(user);
         }
