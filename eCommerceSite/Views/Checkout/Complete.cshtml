@@ -1,0 +1,10 @@
+﻿@model Int32
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+<h2>Checkout Complete</h2>
+<p> Thanks for your order! Your order number is: @Model </p>
+<p>
+    How about checking out more bundles in our gallery
+    @Html.ActionLink("Gallery", "Index", "Bundles")
+</p>

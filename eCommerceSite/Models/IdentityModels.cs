@@ -25,7 +25,8 @@ namespace eCommerceSite.Models
     {
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Order> Order { get; set; }
+        public DbSet<Records> Records { get; set; }
+        public DbSet<Orders> Orders { get; set; }
         public DbSet<Type> Types { get; set; }
         public DbSet<Size> Sizes{ get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }

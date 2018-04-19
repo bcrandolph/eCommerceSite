@@ -91,9 +91,7 @@ namespace eCommerceSite.Models
             ShoppingCart Cart = new ShoppingCart();
             Cart.CartTotal = 0;
             _context.ShoppingCart.Add(Cart);
-            int cartId = _context.ShoppingCart.Last().Id;
-
-
+            int cartId = _context.ShoppingCart.AsEnumerable().Last().Id;
             var userQuery = _context.Users.SingleOrDefault(u => u.Id == user.Id);
 
             userQuery.CartId = cartId;
@@ -129,7 +127,7 @@ namespace eCommerceSite.Models
             decimal? temp = Convert.ToDecimal(total);
             return temp ?? decimal.Zero;
         }
-        public int CreateOrder(ShoppingCart cart)
+        public Guid CreateOrder(Records record)
         {
             decimal orderTotal = 0;
 
@@ -140,18 +138,18 @@ namespace eCommerceSite.Models
             {
                 // Set the order total of the shopping cart
                 orderTotal += (decimal)(item.Quantity * item.Bundle.Cost);
-
+                record.CartId = item.CartId;
             }
             // Set the order's total to the orderTotal count
-            cart.CartTotal = (float)orderTotal;
+            record.Total = orderTotal;
 
             // Save the order
             _context.SaveChanges();
             // Empty the shopping cart
-            var user = _context.Users.SingleOrDefault(u => u.CartId == cart.Id);
+            var user = _context.Users.SingleOrDefault(u => u.Email == HttpContext.Current.User.Identity.Name);
             NewCart(user);
             // Return the OrderId as the confirmation number
-            return cart.Id;
+            return record.Id;
         }
     }
 

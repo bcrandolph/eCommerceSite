@@ -1,0 +1,21 @@
+﻿@model eCommerceSite.Models.Orders
+
+
+@{
+    ViewBag.Title = "AddressAndPayment";
+}
+
+<h2>AddressAndPayment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Address And Payment</h2>
+    <fieldset>
+        <legend>Shipping Information</legend>
+        @Html.EditorForModel()
+    </fieldset>
+
+    <input type="submit" value="Submit Order" />
+}
+

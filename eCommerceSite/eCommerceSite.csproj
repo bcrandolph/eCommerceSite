@@ -215,6 +215,7 @@
     <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\BundlesController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -254,6 +255,18 @@
     <Compile Include="Migrations\201804190613440_OrderTable.Designer.cs">
       <DependentUpon>201804190613440_OrderTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804190657428_records.cs" />
+    <Compile Include="Migrations\201804190657428_records.Designer.cs">
+      <DependentUpon>201804190657428_records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804190708111_orders.cs" />
+    <Compile Include="Migrations\201804190708111_orders.Designer.cs">
+      <DependentUpon>201804190708111_orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804190734494_orders2.cs" />
+    <Compile Include="Migrations\201804190734494_orders2.Designer.cs">
+      <DependentUpon>201804190734494_orders2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bundle.cs" />
@@ -261,7 +274,8 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Gallery.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Records.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Size.cs" />
@@ -611,6 +625,8 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Bundles\Details.cshtml" />
+    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
+    <Content Include="Views\Checkout\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -644,6 +660,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804190613440_OrderTable.resx">
       <DependentUpon>201804190613440_OrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190657428_records.resx">
+      <DependentUpon>201804190657428_records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190708111_orders.resx">
+      <DependentUpon>201804190708111_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190734494_orders2.resx">
+      <DependentUpon>201804190734494_orders2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

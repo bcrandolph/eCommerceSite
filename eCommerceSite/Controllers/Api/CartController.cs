@@ -19,11 +19,13 @@ namespace eCommerceSite.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<CartItemsDto> GetCarts(string query = null) 
+        public IEnumerable<CartItemsDto> GetCarts(string query = null)
         {
+            var userQuery = _context.Users.SingleOrDefault(u => u.Email == HttpContext.Current.User.Identity.Name);
             var cartQuery = _context.CartItems
                 .Include(m => m.Bundle)
-                .Include(m => m.Cart);
+                .Include(m => m.Cart)
+                .Where(m => m.CartId == userQuery.CartId);
 
             if (!String.IsNullOrWhiteSpace(query))
                 cartQuery = cartQuery.Where(m => m.Bundle.Name.Contains(query));

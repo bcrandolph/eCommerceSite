@@ -20,7 +20,6 @@ namespace eCommerceSite.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            
             var cart = CartHelper.GetCart(_context.Users.SingleOrDefault(u=> u.Email == System.Web.HttpContext.Current.User.Identity.Name));
 
             // Set up our ViewModel
