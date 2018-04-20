@@ -15,7 +15,6 @@
     </ul>
 </div>
 <div>
-    <p class="button">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
-    <p class="button">@Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id }, "")</p>
-    <p class="button">@Html.ActionLink("Back to List", "Index")</p>
+    <input type="button" value="Add To Cart" onclick="location.href='@Url.Action("AddToCart","Cart", new { id = Model.Id })'" />
+    <input type="button" value="Return to Bundles" onclick="location.href='@Url.Action("Index","Bundles")'" />
 </div>
