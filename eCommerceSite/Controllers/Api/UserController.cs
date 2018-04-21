@@ -21,6 +21,21 @@ namespace eCommerceSite.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
+        //public IEnumerable<UserDto> GetUsers(string query = null)
+        //{
+        //    var userQuery = _context.Users
+        //        .Include(m => m.Billing)
+        //        .Include(m => m.Shipping)
+        //        .Include(m => m.Payment);
+
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //        userQuery = userQuery.Where(m => m.Name.Contains(query));
+
+        //    return userQuery
+        //        .ToList()
+        //        .Select(Mapper.Map<User, UserDto>);
+        //}
+
         //Get /api/User
         public IHttpActionResult GetUser(string query = null)
         {
@@ -36,6 +51,24 @@ namespace eCommerceSite.Controllers.Api
                 .Select(Mapper.Map<User, UserDto>);
 
             return Ok(userDto);
+        }
+
+        [System.Web.Mvc.HttpPut]
+        public IHttpActionResult UpdateUser(string id, UserDto userDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var currentUserInDb = _context.Users.SingleOrDefault(c => c.Id == id);
+
+            if (currentUserInDb == null)
+                return NotFound();
+
+            Mapper.Map(userDto, currentUserInDb);
+
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

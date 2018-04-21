@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201804190734494_orders2.Designer.cs">
       <DependentUpon>201804190734494_orders2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804200440488_userTypeClass.cs" />
+    <Compile Include="Migrations\201804200440488_userTypeClass.Designer.cs">
+      <DependentUpon>201804200440488_userTypeClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bundle.cs" />
@@ -285,6 +289,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
+    <Compile Include="Models\userType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BundleViewModel.cs" />
@@ -627,6 +632,7 @@
     <Content Include="Views\Bundles\Details.cshtml" />
     <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
     <Content Include="Views\Checkout\Complete.cshtml" />
+    <Content Include="Views\User\UserInfoUpdateForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -669,6 +675,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804190734494_orders2.resx">
       <DependentUpon>201804190734494_orders2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804200440488_userTypeClass.resx">
+      <DependentUpon>201804200440488_userTypeClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
