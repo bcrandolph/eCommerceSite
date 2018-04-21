@@ -1,0 +1,39 @@
+﻿@model eCommerceSite.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "UserInfoUpdateForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserInfoUpdateForm</h2>
+@using (Html.BeginForm("Save", "User"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Billing)
+        @Html.TextBoxFor(m => m.Billing, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Billing)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Shipping)
+        @Html.TextBoxFor(m => m.Shipping, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Shipping)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Payment)
+        @Html.TextBoxFor(m => m.Payment, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Payment)
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

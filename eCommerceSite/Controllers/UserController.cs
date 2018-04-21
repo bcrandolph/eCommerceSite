@@ -20,6 +20,11 @@ namespace eCommerceSite.Controllers
             _context = new ApplicationDbContext();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: User
         public ActionResult Details(String id = "")
         {
@@ -27,9 +32,47 @@ namespace eCommerceSite.Controllers
             var user = _context.Users.SingleOrDefault(c => c.Id == currentUser.ToString());
 
             if (user == null)
-                return Content(currentUser.ToString());//HttpNotFound();
+                return HttpNotFound();
 
-            return View(user);
+            return View("Details");
+        }
+        
+        public ActionResult Edit(string id = "")
+        {
+            var user = _context.Users.SingleOrDefault(b => b.Id == id);
+
+            if (user == null)
+                return HttpNotFound();
+
+            return View("UserInfoUpdateForm");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("UserInfoUpdateForm");
+            }
+
+            if (user.Id == "" || user.Id == null)
+            {
+                _context.Users.Add(user);
+            }
+            else
+            {
+                var currentUserInDb = _context.Users.Single(m => m.Id == user.Id);
+                currentUserInDb.Name = user.Name;
+                currentUserInDb.Billing = user.Billing;
+                currentUserInDb.Shipping = user.Shipping;
+                currentUserInDb.Payment = user.Payment;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "User");
         }
 
     }
