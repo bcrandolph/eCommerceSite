@@ -45,30 +45,41 @@ namespace eCommerceSite.Controllers
             if (user == null)
                 return HttpNotFound();
 
-            return View("UserInfoUpdateForm");
+            var viewModel = new UserViewModel(user)
+            {
+                User = user
+            };
+
+            return View("UserInfoUpdateForm", viewModel);
         }
 
 
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(User user)
+        public ActionResult Save(string id = "", string name = "", string billing = "", string shipping = "", string payment = "")
         {
+            User user = _context.Users.SingleOrDefault(b => b.Id == id);
             if (!ModelState.IsValid)
             {
-                return View("UserInfoUpdateForm");
+                var viewModel = new UserViewModel(user)
+                {
+                    User = user
+                };
+
+                return View("UserInfoUpdateForm", viewModel);
             }
 
-            if (user.Id == "" || user.Id == null)
+            if (user.Id == null)
             {
                 _context.Users.Add(user);
             }
             else
             {
                 var currentUserInDb = _context.Users.Single(m => m.Id == user.Id);
-                currentUserInDb.Name = user.Name;
-                currentUserInDb.Billing = user.Billing;
-                currentUserInDb.Shipping = user.Shipping;
-                currentUserInDb.Payment = user.Payment;
+                currentUserInDb.Name = name;
+                currentUserInDb.Billing = billing;
+                currentUserInDb.Shipping = shipping;
+                currentUserInDb.Payment = payment;
             }
 
             _context.SaveChanges();

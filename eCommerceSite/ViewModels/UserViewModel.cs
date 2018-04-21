@@ -9,6 +9,7 @@ namespace eCommerceSite.ViewModels
 {
     public class UserViewModel
     {
+        public User User { get; set; }
         public string Id { get; set; }
 
         [Required]
@@ -25,27 +26,29 @@ namespace eCommerceSite.ViewModels
         [Required]
         public ShoppingCart Cart { get; set; }
         public int CartId { get; set; }
+
+        public string Title
+        {
+            get
+            {
+                return Id != "" ? "Edit Info" : "New Info";
+            }
+        }
+
+        public UserViewModel()
+        {
+            Id = "";
+        }
+
+        public UserViewModel(User user)
+        {
+            Id = user.Id;
+            Name = user.Name;
+            Billing = user.Billing;
+            Shipping = user.Shipping;
+            Payment = user.Payment;
+            Cart = user.Cart;
+            CartId = user.CartId;
+        }
     }
-
-    //public string Title
-    //{
-    //    get
-    //    {
-    //        return Id != 0 ? "Edit Info" : "New Info";
-    //    }
-    //}
-
-    //public UserViewModel()
-    //{
-    //    Id = 0;
-    //}
-
-    //public UserViewModel(User user)
-    //{
-    //    Id = user.Id;
-    //    Name = user.Name;
-    //    Billing = user.Billing;
-    //    Shipping = user.Shipping;
-    //    Payment = user.Payment;
-    //}
 }

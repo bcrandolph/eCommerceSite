@@ -1,6 +1,8 @@
 ﻿@model eCommerceSite.ViewModels.UserViewModel
 
 @{
+    /**/
+
     ViewBag.Title = "UserInfoUpdateForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,7 +10,7 @@
 <h2>UserInfoUpdateForm</h2>
 @using (Html.BeginForm("Save", "User"))
 {
-    @Html.ValidationSummary(true, "Please fix the following errors")
+    @Html.ValidationSummary()//true, "Please fix the following errors")
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
