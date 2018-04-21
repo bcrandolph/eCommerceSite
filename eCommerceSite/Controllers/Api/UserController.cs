@@ -8,7 +8,7 @@ using System.Data.Entity;
 using eCommerceSite.Models;
 using eCommerceSite.Dtos;
 using AutoMapper;
-
+using Microsoft.AspNet.Identity;
 
 namespace eCommerceSite.Controllers.Api
 {
@@ -21,36 +21,31 @@ namespace eCommerceSite.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        //public IEnumerable<UserDto> GetUsers(string query = null)
+        //public IHttpActionResult GetUsers()
         //{
-        //    var userQuery = _context.Users
-        //        .Include(m => m.Billing)
-        //        .Include(m => m.Shipping)
-        //        .Include(m => m.Payment);
+        //    string id = User.Identity.GetUserId();
+        //    var user = _context.Users.SingleOrDefault(b => b.Id == id);
 
-        //    if (!String.IsNullOrWhiteSpace(query))
-        //        userQuery = userQuery.Where(m => m.Name.Contains(query));
+        //    if (user == null)
+        //        return NotFound();
 
-        //    return userQuery
-        //        .ToList()
-        //        .Select(Mapper.Map<User, UserDto>);
+        //    return Ok(Mapper.Map<User, UserDto>(user));
         //}
 
         //Get /api/User
         public IHttpActionResult GetUser(string query = null)
         {
+                var userQuery = _context.Users
+                    .Include(c => c.Cart);
 
-            var userQuery = _context.Users
-                .Include(c => c.Cart);
+                if (!String.IsNullOrWhiteSpace(query))
+                    userQuery = userQuery.Where(c => c.Name.Contains(query));
 
-            if (!String.IsNullOrWhiteSpace(query))
-                userQuery = userQuery.Where(c => c.Name.Contains(query));
+                var userDto = userQuery
+                    .ToList()
+                    .Select(Mapper.Map<User, UserDto>);
 
-            var userDto = userQuery
-                .ToList()
-                .Select(Mapper.Map<User, UserDto>);
-
-            return Ok(userDto);
+                return Ok(userDto);
         }
 
         [System.Web.Mvc.HttpPut]

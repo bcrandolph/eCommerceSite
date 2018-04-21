@@ -20,6 +20,11 @@ namespace eCommerceSite.Controllers
             _context = new ApplicationDbContext();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: User
         public ActionResult Details(String id = "")
         {
@@ -34,7 +39,6 @@ namespace eCommerceSite.Controllers
         
         public ActionResult Edit(string id = "")
         {
-            id = User.Identity.GetUserId().ToString();
             var user = _context.Users.SingleOrDefault(b => b.Id == id);
 
             if (user == null)
