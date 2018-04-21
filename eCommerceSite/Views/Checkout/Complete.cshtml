@@ -6,5 +6,6 @@
 <p> Thanks for your order! Your order number is: @Model </p>
 <p>
     How about checking out more bundles in our gallery
-    @Html.ActionLink("Gallery", "Index", "Bundles")
+    <input type="button" value="Gallery" onclick="location.href='@Url.Action("Index","Bundles")'"/>
+
 </p>

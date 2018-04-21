@@ -25,18 +25,20 @@ namespace eCommerceSite.Controllers
         {
             var order = new Orders();
             var record = new Records();
+            var user = _context.Users.SingleOrDefault(u => u.Email == System.Web.HttpContext.Current.User.Identity.Name);
             TryUpdateModel(order);
 
             try
             {
                 order.Username = User.Identity.Name;
                 order.OrderDate = DateTime.Now;
-
                 //Save Order
                 _context.Orders.Add(order);
                 _context.SaveChanges();
                 //Process the order
-                var cart = CartHelper.GetCart(_context.Users.SingleOrDefault(u => u.Email == System.Web.HttpContext.Current.User.Identity.Name));
+                var cart = CartHelper.GetCart(user);
+                record.OrderId = _context.Orders.AsEnumerable().Last().OrderId;
+                record.UserId = user.Id;
                 cart.CreateOrder(record);
                 return RedirectToAction("Complete", new { id = order.OrderId });
             }

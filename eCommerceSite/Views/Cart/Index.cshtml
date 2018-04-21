@@ -7,7 +7,7 @@
     <em>Review</em> your cart:
 </h3>
 <p class="button">
-    @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")
+    <input type="button" value="Checkout" onclick="location.href='@Url.Action("AddressAndPayment","Checkout")'" />
 </p>
 <div id="update-message">
 </div>

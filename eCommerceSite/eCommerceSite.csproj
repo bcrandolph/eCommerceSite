@@ -303,6 +303,7 @@
       <DependentUpon>aspnet-eCommerceSite-20180328060704.mdf</DependentUpon>
     </Content>
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\bootstrap-readable.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -474,6 +475,7 @@
     <Content Include="Content\Images\Supply 6.jpg" />
     <Content Include="Content\Images\Supply 7.jpg" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\bootstrap-readable.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />

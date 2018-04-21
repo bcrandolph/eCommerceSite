@@ -142,7 +142,7 @@ namespace eCommerceSite.Models
             }
             // Set the order's total to the orderTotal count
             record.Total = orderTotal;
-
+            _context.Records.Add(record);
             // Save the order
             _context.SaveChanges();
             // Empty the shopping cart
