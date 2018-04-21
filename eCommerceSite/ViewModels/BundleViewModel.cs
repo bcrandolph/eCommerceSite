@@ -25,7 +25,7 @@ namespace eCommerceSite.ViewModels
         [Display(Name = "Number in Stock")]
         [Range(1, 20)]
         public byte? NumberInStock { get; set; }
-
+        public string ImageLink { get; set; }
         public int AmtSold { get; set; }
 
         [Required]
@@ -57,6 +57,7 @@ namespace eCommerceSite.ViewModels
             NumberInStock = bundle.NumberInStock;
             AmtSold = bundle.AmtSold;
             Cost = bundle.Cost;
+            ImageLink = bundle.ImageLink;
         }
     }
 }

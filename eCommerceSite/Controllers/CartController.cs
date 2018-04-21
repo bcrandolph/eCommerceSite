@@ -18,6 +18,7 @@ namespace eCommerceSite.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Cart
+        [Authorize]
         public ActionResult Index()
         {
             var cart = CartHelper.GetCart(_context.Users.SingleOrDefault(u=> u.Email == System.Web.HttpContext.Current.User.Identity.Name));
@@ -31,7 +32,7 @@ namespace eCommerceSite.Controllers
             // Return the view
             return View(viewModel);
         }
-
+        [Authorize]
         // GET: /Store/AddToCart/5
         public ActionResult AddToCart(int id)
         {
@@ -46,7 +47,7 @@ namespace eCommerceSite.Controllers
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         // AJAX: /Cart/RemoveFromCart/5
         [HttpPost]
         public ActionResult RemoveFromCart(int id)
@@ -73,6 +74,7 @@ namespace eCommerceSite.Controllers
             };
             return Json(results);
         }
+        [Authorize]
         // GET: /Cart/CartSummary
         [ChildActionOnly]
         public ActionResult CartSummary()

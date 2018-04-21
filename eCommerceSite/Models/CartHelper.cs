@@ -138,6 +138,8 @@ namespace eCommerceSite.Models
             {
                 // Set the order total of the shopping cart
                 orderTotal += (decimal)(item.Quantity * item.Bundle.Cost);
+                item.Bundle.AmtSold++;
+                item.Bundle.NumberInStock--;
                 record.CartId = item.CartId;
             }
             // Set the order's total to the orderTotal count

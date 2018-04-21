@@ -40,12 +40,13 @@ namespace eCommerceSite.Controllers
                 record.OrderId = _context.Orders.AsEnumerable().Last().OrderId;
                 record.UserId = user.Id;
                 cart.CreateOrder(record);
+
                 return RedirectToAction("Complete", new { id = order.OrderId });
-            }
+        }
             catch
             {
-                //Invalid - redisplay with errors
-                return View(order);
+            //Invalid - redisplay with errors
+            return View(order);
             }
         }
         // GET: /Checkout/Complete

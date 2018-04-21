@@ -10,6 +10,5 @@ namespace eCommerceSite.Models
         public string TypeName { get; set; }
         public int TypeItems { get; set; }
         public float TypeRevenue{ get; set; }
-        public float TotalRevenue { get; set; }
     }
 }

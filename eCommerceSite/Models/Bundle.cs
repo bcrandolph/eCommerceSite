@@ -24,6 +24,8 @@ namespace eCommerceSite.Models
         [Range(1,20)]
         public byte NumberInStock { get; set; }
 
+        public string ImageLink { get; set; }
+
         public int AmtSold { get; set; }
 
         [Display(Name = "Cost")]

@@ -1,8 +1,10 @@
 ﻿@model eCommerceSite.ViewModels.BundleViewModel
 
 @{
-    ViewBag.Title = "BundleForm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "BundleForm";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>BundleForm</h2>
@@ -33,6 +35,11 @@
         @Html.LabelFor(m => m.Cost)
         @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Cost)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImageLink)
+        @Html.TextBoxFor(m => m.ImageLink, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ImageLink)
     </div>
     @Html.HiddenFor(m => m.Id)
     @Html.AntiForgeryToken()
