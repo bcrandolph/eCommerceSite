@@ -7,6 +7,8 @@ using System.Data.Entity;
 using eCommerceSite.Models;
 using eCommerceSite.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Web.Http;
+
 
 namespace eCommerceSite.Controllers
 {
@@ -26,15 +28,14 @@ namespace eCommerceSite.Controllers
         }
 
         // GET: User
-        public ActionResult Details(String id = "")
+        public ActionResult Details(string id = "")
         {
             var currentUser = User.Identity.GetUserId();
-            var user = _context.Users.SingleOrDefault(c => c.Id == currentUser.ToString());
-
+            var user = _context.Users.SingleOrDefault(c => c.Email == System.Web.HttpContext.Current.User.Identity.Name);
             if (user == null)
                 return HttpNotFound();
 
-            return View("Details");
+            return View(user);
         }
         
         public ActionResult Edit(string id = "")
@@ -48,7 +49,7 @@ namespace eCommerceSite.Controllers
         }
 
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(User user)
         {

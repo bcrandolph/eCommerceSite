@@ -1,56 +1,20 @@
-﻿using Microsoft.AspNet.Identity;
-@model IEnumerable<eCommerceSite.Models.User>
-
+﻿
+@model eCommerceSite.Models.User
 @{
     ViewBag.Title = "Account Information";
 }
 
 <h2>Account Information</h2>
 
-<table id="users" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Billing</th>
-            <th>Shipping</th>
-            <th>Payment</th>
-            <th>Edit</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
 
-@section scripts
-{
-    <script>
-        $(document).ready(function () {
-            var table = $("#users").DataTable({
-                ajax: {
-                    url: "/api/user/",
-                    dataType: "json",
-                    dataSrc: ""
-                },
-                columns: [
-                    {
-                        data: "name"
-                    },
-                    {
-                        data: "billing"
-                    },
-                    {
-                        data: "shipping"
-                    },
-                    {
-                        data: "payment"
-                    },
-                    {
-                        data: "id",
-                        render: function (data, user) {
-                            return "<a href='/user/edit/" + user.id + "'> Edit </a>";
-                        }
-                    }
-                ]
-            })
-        });
-    </script>
-}
+<div>
+    <h4>@Model.Name</h4>
+    <ul>
+        <li>Billing: @Model.Billing</li>
+        <li>Shipping: @Model.Shipping</li>
+        <li>Payment: @Model.Payment</li>
+    </ul>
+</div>
+<div>
+    <input type="button" value="Edit" onclick="location.href='@Url.Action("Edit","User", new { id = Model.Id })'" />
+</div>   

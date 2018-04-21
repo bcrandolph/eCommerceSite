@@ -48,6 +48,16 @@ namespace eCommerceSite.Controllers.Api
                 return Ok(userDto);
         }
 
+        public IHttpActionResult GetCart(string id)
+        {
+            var user = _context.Users.SingleOrDefault(c => c.Email == HttpContext.Current.User.Identity.Name);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<User, UserDto>(user));
+        }
+
         [System.Web.Mvc.HttpPut]
         public IHttpActionResult UpdateUser(string id, UserDto userDto)
         {
